@@ -2,17 +2,11 @@ from django.contrib.auth.models import User
 from rest_framework import serializers
 from .models import Snippet
 
-
 class SnippetSerializer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
     class Meta:
         model = Snippet
-        fields = ['id', 'title', 'code', 'linenos', 'language', 'style']
-
-
-from snippets.serializers import SnippetSerializer
-
-serializer = SnippetSerializer()
-print(repr(serializer))
+        fields = ['id', 'title', 'code', 'linenos', 'language', 'style','owner']
 
 
 def create(self, validated_data):
