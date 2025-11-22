@@ -1,10 +1,10 @@
 from django.contrib.auth.models import User
-from django.shortcuts import render
-from rest_framework import generics, renderers, viewsets
+from rest_framework import renderers, viewsets
 from rest_framework import permissions
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
+from rest_framework.decorators import action
 
 from .models import Snippet
 from .permissions import IsOwnerOrReadOnly
